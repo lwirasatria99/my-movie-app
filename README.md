@@ -1,4 +1,4 @@
-# my-movie-app
+# my-movie-app - FLUTTER
 
 I'm trying to utilize BLOC + CLEAN ARCHITECTURE HERE, There are:
 1. Common -> for common file like constant
