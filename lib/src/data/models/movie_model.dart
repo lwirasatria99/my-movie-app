@@ -10,8 +10,8 @@ class MovieModel extends Movie {
   factory MovieModel.fromJson(Map<String, dynamic> json) {
     return MovieModel(
       title: json['title'],
-      imagePath: json['poster_path'],
-      rating: json['vote_average'].toDouble(),
+      imagePath: json['imageSet']['verticalPoster']['w360'],
+      rating: json['rating'].toDouble(),
     );
   }
 }

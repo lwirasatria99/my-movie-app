@@ -28,10 +28,17 @@ class MovieCarousel extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
                   Image.network(
-                    'https://image.tmdb.org/t/p/w500${movie.imagePath}',
+                    movie.imagePath,
                     fit: BoxFit.cover,
                     height: 250.0,
                     width: double.infinity,
+                    errorBuilder: (context, error, stackTrace) {
+                      return Icon(
+                        Icons.error,
+                        color: Colors.red,
+                        size: 50,
+                      );
+                    },
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
