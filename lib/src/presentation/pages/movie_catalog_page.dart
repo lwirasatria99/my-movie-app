@@ -36,10 +36,17 @@ class MovieCatalogView extends StatefulWidget {
 }
 
 class _MovieCatalogViewState extends State<MovieCatalogView> {
+  final TextEditingController _searchController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
-    context.read<MovieBloc>().add(FetchMovies());
+    context.read<MovieBloc>().add(FetchMovies('gun'));
+  }
+
+  void _onSearch() {
+    final query = _searchController.text;
+    context.read<MovieBloc>().add(FetchMovies(query));
   }
 
   @override
@@ -49,12 +56,9 @@ class _MovieCatalogViewState extends State<MovieCatalogView> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: <Widget>[
-          // Text(
-          //   'Movie Catalog',
-          //   style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          // ),
-          // SizedBox(height: 20),
+          // SearchView
           TextField(
+            controller: _searchController,
             decoration: InputDecoration(
               hintText: 'Search...',
               border: OutlineInputBorder(
@@ -62,8 +66,11 @@ class _MovieCatalogViewState extends State<MovieCatalogView> {
               ),
               prefixIcon: Icon(Icons.search),
             ),
+            onSubmitted: (value) => _onSearch(),
           ),
           SizedBox(height: 20),
+
+          // Carousel Image
           Expanded(child: BlocBuilder<MovieBloc, MovieState>(
             builder: (context, state) {
               if (state is MovieLoading) {

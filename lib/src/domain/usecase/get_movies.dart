@@ -6,7 +6,7 @@ class GetMovies {
 
   GetMovies(this.repository);
 
-  Future<List<Movie>> execute() async {
-    return await repository.getMovies();
+  Future<List<Movie>> execute(String query) async {
+    return await repository.getMovies(query);
   }
 }

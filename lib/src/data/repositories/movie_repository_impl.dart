@@ -8,7 +8,7 @@ class MovieRepositoryImpl implements MovieRepository {
   MovieRepositoryImpl(this.apiService);
 
   @override
-  Future<List<Movie>> getMovies() async {
-    return await apiService.fetchMovies();
+  Future<List<Movie>> getMovies(String query) async {
+    return await apiService.fetchMovies(query);
   }
 }

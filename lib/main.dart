@@ -30,7 +30,7 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider(
             create: (context) =>
-                MovieBloc(context.read<GetMovies>())..add(FetchMovies()),
+                MovieBloc(context.read<GetMovies>())..add(FetchMovies('gun')),
           ),
         ],
         child: MaterialApp(

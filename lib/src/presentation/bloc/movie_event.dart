@@ -7,4 +7,11 @@ sealed class MovieEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class FetchMovies extends MovieEvent {}
+class FetchMovies extends MovieEvent {
+  final String query;
+
+  const FetchMovies(this.query);
+
+  @override
+  List<Object> get props => [query];
+}

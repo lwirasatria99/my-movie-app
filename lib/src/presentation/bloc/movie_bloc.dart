@@ -16,7 +16,7 @@ class MovieBloc extends Bloc<MovieEvent, MovieState> {
     if (event is FetchMovies) {
       yield MovieLoading();
       try {
-        final movies = await getMovies.execute();
+        final movies = await getMovies.execute(event.query);
         yield MovieLoaded(movies: movies);
       } catch (e) {
         yield MovieError(message: e.toString());
